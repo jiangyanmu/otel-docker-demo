@@ -1,0 +1,17 @@
+receivers:
+  otlp:
+    protocols:
+      grpc:
+      http:
+
+exporters:
+  logging:
+    loglevel: debug
+  file:
+    path: /output/traces.log
+
+service:
+  pipelines:
+    traces:
+      receivers: [otlp]
+      exporters: [logging, file]
