@@ -1,5 +1,10 @@
-version: '3'
 services:
+  app:
+    build: .
+    container_name: my-python-app
+    depends_on:
+      - otel-collector
+
   otel-collector:
     image: otel/opentelemetry-collector:latest
     container_name: otel-collector

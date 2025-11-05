@@ -2,11 +2,9 @@ receivers:
   otlp:
     protocols:
       grpc:
-      http:
+        endpoint: 0.0.0.0:4317
 
 exporters:
-  logging:
-    loglevel: debug
   file:
     path: /output/traces.log
 
@@ -14,4 +12,4 @@ service:
   pipelines:
     traces:
       receivers: [otlp]
-      exporters: [logging, file]
+      exporters: [file]
